@@ -5,4 +5,11 @@ function isPrime(num) {
   }
   return true; 
 }
-console.log(isPrime(11));  
+console.log(isPrime(11)); 
+
+function isEvenOdd(num){
+  if(num%2==0) return "Even";
+  else return "Odd";
+}
+console.log(isEvenOdd(10));
+
