@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+            height:100vh;
+            font-family: Arial, sans-serif;
+            
+        }
+        .container{
+            width:350px;
+            border:3px solid gray;
+            padding:20px;
+            box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+            border-radius: 20px;
+            text-align:center;    
+        }
+        .container img{
+            width:80%;
+            border-radius: 15px;   
+        }
+        h3{
+            margin-top:15px;
+            font-size:20px;
+            color:#555
+        }
+        p{
+            margin:5px 0;
+            color:#555;
+        }
+        .price{
+            margin-top:10px;
+            font-size:18px;
+        }
+        .price strong{
+            color:#000;
+            font-size:22px;
+        }
+        .old-price{
+            text-decoration: line-through;
+            color:gray;
+            margin-left:5px;
+        }
+        .discount{
+            color:#388e3c;
+            font-weight:bold;
+            margin-left:5px;
+        }
+        .logo{
+            width:100px !important;
+            margin:10px auto;
+            display:block;
+        }
+        button{
+            background-color: #2874f0;
+            color:white;
+            border:none;
+            padding:10px 20px;
+            border-radius: 25px;
+            font-size:16px;
+        }
+        button:hover{
+            background-color: #1257c0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+            <img src="https://rukminim2.flixcart.com/image/612/612/xif0q/smartwatch/w/x/h/-original-imahfa7xspmxemvj.jpeg" alt="Watch image">
+            <h3>SAMSUNG Galaxy Watch6 LTE</h3>
+            <p>Graphite Strap, 44mm</p>
+            <img src="https://static-assets-web.flixcart.com/fk-p-linchpin-web/fk-cp-zion/img/fa_62673a.png" alt="logo image" class="logo">
+            <p class="price">
+                <strong>₹18,999</strong>
+                <span class="old-price">₹41,999</span>
+                <span class="discount">54% off</span>
+            </p>
+            <button>Buy Now</button>
+    </div>  
+</body>
+</html>
