@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Weekly Schedule</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        display:flex;
+        justify-content: center;
+        align-items: center;
+        margin: 0;
+        min-height: 100vh;
+    }
+    .container {
+        max-width: 900px;
+        background: white;
+        border-radius: 10px;
+        padding: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width:90%;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color:#4a4a4a;
+    }
+    
+    .grid {
+        display: grid;
+        grid-template-columns: 1fr repeat(5, 1fr);
+        gap: 5px;
+        text-align: center;
+    }
+
+    .day, .time {
+        font-weight: bold;
+        background-color: #ddd;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .pink {
+        background-color: pink;
+        height: 40px;
+        border-radius: 5px;
+    }
+    .yellow {
+        background-color: yellow;
+        height: 40px;
+        border-radius: 5px;
+    }
+
+    .note {
+        margin-top: 20px;
+        font-style: italic;
+        color: #555;
+    }
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Weekly Schedule</h1>
+
+<div class="grid">
+
+    <!-- Header Row -->
+    <div class="time"></div>
+    <div class="day">Monday</div>
+    <div class="day">Tuesday</div>
+    <div class="day">Wednesday</div>
+    <div class="day">Thursday</div>
+    <div class="day">Friday</div>
+
+    <!-- Time + 5 columns -->
+    <!-- 08:00 -->
+    <div class="time">08:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 09:00 -->
+    <div class="time">09:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 10:00 -->
+    <div class="time">10:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 11:00 -->
+    <div class="time">11:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 12:00 -->
+    <div class="time">12:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 13:00 -->
+    <div class="time">13:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 14:00 -->
+    <div class="time">14:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 15:00 -->
+    <div class="time">15:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+    <!-- 16:00 -->
+    <div class="time">16:00</div>
+    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
+
+</div>
+
+<div class="note">Note:</div>
+
+</div>
+</body>
+</html>
