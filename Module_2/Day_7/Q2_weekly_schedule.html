@@ -31,33 +31,47 @@
     
     .grid {
         display: grid;
-        grid-template-columns: 1fr repeat(5, 1fr);
-        gap: 5px;
+        grid-template-columns: 120px repeat(5, 1fr);
+        gap: 12px;
         text-align: center;
     }
+    .day-mon{background-color: pink;}
+    .day-tue{background-color: rgb(223, 223, 113);}
+    .day-wed{background-color: pink;}
+    .day-thu{background-color: rgb(223, 223, 113);}
+    .day-fri{background-color: pink;}
 
     .day, .time {
         font-weight: bold;
-        background-color: #ddd;
-        padding: 10px;
-        border-radius: 5px;
+        padding: 12px;
+        border-radius: 20px;
+    }
+    .time{
+        background-color: lightblue;
     }
 
-    .pink {
-        background-color: pink;
+    .monday{background-color: pink;}
+    .tuesday{background-color: rgb(223, 223, 113);}
+    .wednesday{background-color: pink;}
+    .thursday{background-color: rgb(223, 223, 113);}
+    .friday{background-color: pink;}
+
+     .monday, .tuesday, .wednesday, .thursday, .friday {
         height: 40px;
-        border-radius: 5px;
-    }
-    .yellow {
-        background-color: rgb(223, 223, 113);
-        height: 40px;
-        border-radius: 5px;
-    }
+        border-radius: 20px;
+     }
 
     .note {
         margin-top: 20px;
         font-style: italic;
         color: #555;
+        background-color: lightblue;
+        height:40px;
+        border-radius: 20px;
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        padding-left: 15px;
     }
 </style>
 </head>
@@ -68,56 +82,32 @@
 <h1>Weekly Schedule</h1>
 
 <div class="grid">
-
-    <!-- Header Row -->
     <div class="time"></div>
-    <div class="day">Monday</div>
-    <div class="day">Tuesday</div>
-    <div class="day">Wednesday</div>
-    <div class="day">Thursday</div>
-    <div class="day">Friday</div>
-
-    <!-- Time + 5 columns -->
-    <!-- 08:00 -->
+    <div class="day day-mon">Monday</div>
+    <div class="day day-tue">Tuesday</div>
+    <div class="day day-wed">Wednesday</div>
+    <div class="day day-thu">Thursday</div>
+    <div class="day day-fri">Friday</div>
     <div class="time">08:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 09:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">09:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 10:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">10:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 11:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">11:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 12:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">12:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 13:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">13:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 14:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">14:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 15:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">15:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
-    <!-- 16:00 -->
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div>
     <div class="time">16:00</div>
-    <div class="pink"></div><div class="yellow"></div><div class="pink"></div><div class="yellow"></div><div class="pink"></div>
-
+    <div class="monday"></div><div class="tuesday"></div><div class="wednesday"></div><div class="thursday"></div><div class="friday"></div> 
 </div>
-
 <div class="note">Note:</div>
-
 </div>
 </body>
 </html>
