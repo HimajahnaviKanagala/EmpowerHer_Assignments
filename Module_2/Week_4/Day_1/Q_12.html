@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul id="list">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <button onclick="addText()">Add Item</button>
+</body>
+<script>
+    function addText(){
+        let ul=document.querySelector("#list");
+        let newLi=document.createElement("li");
+        let num=ul.children.length+1;
+        newLi.textContent="New Item "+ num;
+        if(num%2===1){
+            newLi.style.fontWeight="bold";
+            newLi.style.color="blue";
+        }else{
+            newLi.style.fontStyle="italic";
+            newLi.style.color="red";
+        }
+        ul.appendChild(newLi);
+    }
+
+</script>
+</html>

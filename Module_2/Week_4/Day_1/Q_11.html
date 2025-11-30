@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="changeText">Hello World!</h1>
+    <button onclick="changeText()">change Text</button>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore odit voluptate, veniam ex dolorum nisi hic. Velit quae molestiae, in cupiditate animi, iure sit debitis nesciunt aliquam eligendi ipsam voluptatibus.</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus asperiores labore provident eum hic iste tempore sed accusantium necessitatibus, sint eligendi corporis distinctio aspernatur veritatis impedit possimus tempora cupiditate voluptates?</p>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima doloribus recusandae soluta sint, necessitatibus itaque iure optio animi cumque possimus eveniet quod esse delectus illum magni ea sequi veritatis laudantium.</p>
+    <button onclick="changeColor()">Change All</button><br><br>
+    <div class="container">Hello EveryOne!</div><br>
+    <button onclick="changeBackColor()">Change Color</button>
+</body>
+<script>
+    function changeText(){
+        document.getElementById("changeText").textContent="Welcome to the DOM World!"
+    }
+    function changeColor(){
+       let para= document.getElementsByTagName("p");
+       for(let i of para){
+        i.style.color="blue";
+       }
+    }
+    function changeBackColor(){
+        let color=document.querySelector(".container");
+        color.style.backgroundColor="yellow";
+    }
+    
+</script>
+</html>
