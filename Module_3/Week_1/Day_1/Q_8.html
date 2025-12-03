@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch</title>
+</head>
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .todo {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .completed {
+            text-decoration: line-through;
+            color: gray;
+        }
+        button {
+            margin-left: 10px;
+        }
+        #empty-message {
+            text-align: center;
+            font-size: 18px;
+            color: gray;
+        }
+    </style>
+<body>
+    <h2>Todo App</h2>
+    <button onclick="fetchAndStoreTodos()">Fetch Todos</button>
+    <div id="todoContainer"></div>
+    
+</body>
+<script>
+    const url="https://jsonplaceholder.typicode.com/todos";
+    const key="todos";
+
+    async function fetchAndStoreTodos(){
+        try{
+            const res=await fetch(url);
+            const data=await res.json();
+            const first20=data.slice(0,20);
+            localStorage.setItem(key,JSON.stringify(first20));
+            renderTodos();
+        }catch(error){
+            console.log("Error fetching todos:", error);
+        }
+    }
+
+    function getTodosFromStorage(){
+        return JSON.parse(localStorage.getItem(key)) || [];
+    }
+
+    function saveTodosToStorage(todos){
+        localStorage.setItem(key,JSON.stringify(todos));
+    }
+
+    function deleteTodo(id){
+        let todos=getTodosFromStorage();
+        todos=todos.filter(todo=>todo.id!==id);
+
+        saveTodosToStorage(todos);
+        renderTodos();
+    }
+
+    function toggleComplete(id){
+        let todos=getTodosFromStorage();
+        todos=todos.map(todo=>
+            todo.id===id?{...todo,completed: !todo.completed}:todo
+        );
+
+        saveTodosToStorage(todos);
+        renderTodos();
+    }
+
+    function renderTodos(){
+        const container=document.getElementById("todoContainer");
+        const todos=getTodosFromStorage();
+        container.innerHTML="";
+        if(todos.length===0){
+            container.innerHTML=`<p id="empty-message">No Todos Available</p>`;
+            return;
+        }
+        todos.forEach(todo => {
+                const div = document.createElement("div");
+                div.className = "todo";
+
+                const title = document.createElement("span");
+                title.textContent = todo.title;
+                if (todo.completed) title.classList.add("completed");
+
+                const actions = document.createElement("div");
+
+                
+                const toggleBtn = document.createElement("button");
+                toggleBtn.textContent = "complete";
+                toggleBtn.onclick = () => toggleComplete(todo.id);
+
+                
+                const deleteBtn = document.createElement("button");
+                deleteBtn.textContent = "Delete";
+                deleteBtn.onclick = () => deleteTodo(todo.id);
+
+                actions.appendChild(toggleBtn);
+                actions.appendChild(deleteBtn);
+
+                div.appendChild(title);
+                div.appendChild(actions);
+
+                container.appendChild(div);
+            });
+    }
+    window.onload=renderTodos;
+</script>
+
+</html>
