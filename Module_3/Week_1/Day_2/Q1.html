@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Management App</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: 300px 1fr;
+      gap: 20px;
+      padding: 20px;
+    }
+    .sidebar {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      height: fit-content;
+    }
+    .books {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    }
+    .card img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+    button {
+      padding: 6px 10px;
+      border: none;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+    .btn-primary { background: #007bff; color: white; }
+    .btn-danger { background: #d9534f; color: white; }
+    .btn-warning { background: #f0ad4e; color: white; }
+    .btn { background: #ddd; }
+
+    .modal-bg {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 400px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container">
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <h2>Add New Book</h2>
+    <form id="bookForm">
+      <label>Title:</label><br>
+      <input id="title" required /><br><br>
+
+      <label>Author:</label><br>
+      <input id="author" required /><br><br>
+
+      <label>Price:</label><br>
+      <input id="price" type="number" required /><br><br>
+
+      <label>Image URL:</label><br>
+      <input id="image" /><br><br>
+
+      <button class="btn-primary" type="submit">Add Book</button>
+    </form>
+    <br>
+    <button class="btn" id="seed">Seed Dummy Data</button>
+  </div>
+
+  <!-- BOOK LIST -->
+  <div>
+    <h1>Book Library</h1>
+    <div id="books" class="books"></div>
+  </div>
+</div>
+
+<!-- MODAL -->
+<div id="modal" style="display:none;" class="modal-bg">
+  <div class="modal">
+    <h2 id="m-title"></h2>
+    <p><b>Author:</b> <span id="m-author"></span></p>
+    <p><b>Price:</b> ₹<span id="m-price"></span></p>
+    <img id="m-img" style="width:100%; margin-top:10px; border-radius:8px;" />
+    <br><br>
+    <button class="btn" onclick="closeModal()">Close</button>
+  </div>
+</div>
+
+<!-- REALTIME DATABASE VERSION -->
+<script type="module">
+  // Firebase SDK imports
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { 
+    getDatabase, ref, push, set, remove, update, onValue 
+  } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  // INSERT YOUR REALTIME DATABASE CONFIG HERE
+  const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "book-management-app-661f3.firebaseapp.com",
+  databaseURL: "https://book-management-app-661f3-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "book-management-app-661f3",
+  storageBucket: "book-management-app-661f3.appspot.com",
+  messagingSenderId: "YOUR_SENDER_ID",
+  appId: "YOUR_APP_ID"
+};
+
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const booksRef = ref(db, "books");
+
+  const booksDiv = document.getElementById("books");
+
+  // REALTIME LISTENER
+  onValue(booksRef, (snapshot) => {
+    booksDiv.innerHTML = "";
+
+    const data = snapshot.val();
+    if (!data) return;
+
+    Object.entries(data).forEach(([id, b]) => {
+      const card = document.createElement("div");
+      card.className = "card";
+      card.innerHTML = `
+        <img src="${b.coverImageURL}" />
+        <h3>${b.title}</h3>
+        <p>by ${b.author}</p>
+        <p><b>₹ ${b.price}</b></p>
+
+        <button class='btn-warning' onclick='updateAuthor("${id}","${b.author}")'>Update Author</button>
+        <button class='btn-danger' onclick='deleteBook("${id}")'>Delete</button>
+        <button class='btn' onclick='viewDetails("${id}","${b.title}","${b.author}",${b.price},"${b.coverImageURL}")'>View</button>
+      `;
+
+      booksDiv.appendChild(card);
+    });
+  });
+
+  // ADD BOOK
+  document.getElementById("bookForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const newBookRef = push(booksRef);
+    await set(newBookRef, {
+      title: title.value,
+      author: author.value,
+      price: Number(price.value),
+      coverImageURL: image.value || "https://via.placeholder.com/200"
+    });
+
+    e.target.reset();
+  });
+
+  // UPDATE AUTHOR
+  window.updateAuthor = async function(id, author) {
+    const newAuthor = prompt("Enter new author name", author);
+    if (!newAuthor) return;
+
+    await update(ref(db, "books/" + id), { author: newAuthor });
+  }
+
+  // DELETE BOOK
+  window.deleteBook = async function(id) {
+    if (confirm("Delete this book?")) {
+      await remove(ref(db, "books/" + id));
+    }
+  }
+
+  // VIEW DETAILS
+  window.viewDetails = function(id, title, author, price, url) {
+    document.getElementById("m-title").innerText = title;
+    document.getElementById("m-author").innerText = author;
+    document.getElementById("m-price").innerText = price;
+    document.getElementById("m-img").src = url;
+
+    document.getElementById("modal").style.display = "flex";
+  }
+  window.closeModal = function() {
+    document.getElementById("modal").style.display = "none";
+  }
+
+  // SEED DATA
+  document.getElementById("seed").onclick = () => {
+    const sample = [
+      { title: "The Silent Orchard", author: "Ava Green", price: 9.99, coverImageURL: "https://picsum.photos/seed/1/300/400" },
+      { title: "Coding with Fire", author: "R. Dev", price: 19.5, coverImageURL: "httpsum.photos/seed/2/300/400" },
+      { title: "Journeys North", author: "Samir Patel", price: 12, coverImageURL: "https://picsum.photos/seed/3/300/400" },
+      { title: "Little Atlas", author: "M. Rivers", price: 7.25, coverImageURL: "https://picsum.photos/seed/4/300/400" }
+    ];
+
+    sample.forEach(b => set(push(booksRef), b));
+  }
+</script>
+
+</body>
+</html>
