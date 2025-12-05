@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script type="module">
+        import {Navbar} from "../Components/navbar.js";
+        import {Footer} from "../Components/footer.js";
+
+        document.addEventListener("DOMContentLoaded",()=>{
+            document.getElementById("navbar").innerHTML=Navbar();
+            document.getElementById("footer").innerHTML=Footer();
+        });
+    </script>
+</head>
+<body>
+    <div id="navbar"></div>
+    <h1>Welcome to Modular JS App</h1>
+    <div id="footer"></div>
+</body>
+</html>
