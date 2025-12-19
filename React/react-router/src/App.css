@@ -1,0 +1,28 @@
+.navbar{
+  display:flex;
+  gap:20px;
+  background-color: #333;
+  padding:20px;
+}
+
+.navbar a{
+  color:white;
+  text-decoration: none;
+}
+
+.navbar a.active{
+  font-weight: bold;
+  text-decoration: underline;
+}
+ .todo-grid{
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap:16px;
+  padding: 20px;
+ }
+
+ .todo-card{
+  border:1px solid #ccc;
+  padding:12px;
+  border-radius: 6px;
+ }
