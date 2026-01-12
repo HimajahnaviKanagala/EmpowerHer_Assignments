@@ -1,0 +1,34 @@
+{
+  "students": [
+    {
+      "id": 1,
+      "name": "Anirudh",
+      "course": "Computer Science",
+      "year": 2
+    },
+    {
+      "id": 2,
+      "name": "Devansh",
+      "course": "Computer Application",
+      "year": 2
+    },
+    {
+      "id": 3,
+      "name": "Yuvansh",
+      "course": "Computer Science",
+      "year": 2
+    },
+    {
+      "id": 4,
+      "name": "Anand",
+      "course": "computers",
+      "year": 2
+    },
+    {
+      "id": 6,
+      "name": "Gopal",
+      "course": "Science",
+      "year": 2
+    }
+  ]
+}
