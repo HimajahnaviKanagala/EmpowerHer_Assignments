@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "id": 1768719499370,
+      "name": "Hima",
+      "email": "hima@gmail.com"
+    },
+    {
+      "id": 1768719524459,
+      "name": "Jahnavi",
+      "email": "jahnavi@gmail.com"
+    },
+    {
+      "id": 1768719545679,
+      "name": "Gopal Sai",
+      "email": "GopalSai@gmail.com"
+    },
+    {
+      "id": 1768719564078,
+      "name": "Devansh",
+      "email": "Devansh@gmail.com"
+    },
+    {
+      "id": 1768719580851,
+      "name": "Yuvansh",
+      "email": "yuvansh@gmail.com"
+    },
+    {
+      "id": 1768719659066,
+      "name": "Anand",
+      "email": "anand@gmail.com"
+    }
+  ],
+  "todos": [
+    {
+      "id": 1768722682730,
+      "title": "Learn React",
+      "completed": false
+    },
+    {
+      "id": 1768722726299,
+      "title": "Learn Node",
+      "completed": false
+    },
+    {
+      "id": 1768722742231,
+      "title": "Learn Express",
+      "completed": false
+    },
+    {
+      "id": 1768722754723,
+      "title": "Learn CRUD operations",
+      "completed": false
+    }
+  ]
+}
