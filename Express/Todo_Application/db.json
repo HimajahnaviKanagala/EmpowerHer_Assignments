@@ -1,0 +1,39 @@
+{
+  "todos": [
+    {
+      "id": 1768753921570,
+      "title": "Learn Express",
+      "completed": false
+    },
+    {
+      "id": 1768753938965,
+      "title": "React Learnt",
+      "completed": "true"
+    },
+    {
+      "id": 1768753947194,
+      "title": "Node Learnt",
+      "completed": "true"
+    },
+    {
+      "id": 1768753963545,
+      "title": "Learn JS",
+      "completed": false
+    },
+    {
+      "id": 1768753981181,
+      "title": "Learn CSS",
+      "completed": false
+    },
+    {
+      "id": 1768755528784,
+      "title": "Learn HTML",
+      "completed": false
+    },
+    {
+      "id": 1768756484113,
+      "title": "Learn Tailwind",
+      "completed": false
+    }
+  ]
+}
