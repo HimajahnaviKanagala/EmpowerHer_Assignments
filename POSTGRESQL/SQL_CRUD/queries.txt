@@ -1,0 +1,33 @@
+create table students (id SERIAL primary key, name text, email text, age integer, course text, created_at timestamp default current_timestamp);
+
+insert into students (name, email, age, course) values
+('Hima','hima@gmail.com',20,'Computer Applications'),
+('Jahnavi','jahnavi@gmail.com',22,'Computer Science'),
+('Gopal','gopal@gmail.com',19,'Information Technology'),
+('Devansh','devansh@gmail.com',23,'Data Science'),
+('Yuvansh','yuvansh@gmail.com',21,'Sofware Engineering'),
+('Anand','anand@gmail.com',24,'Cyber Security'),
+('Lahari','lahari@gmail.com',21,'Artificial Intelligence'),
+('Rohani','rohani@gmail.com',20,'Computer Science'),
+('Anirudh','anirudh@gmail.com',19,'Machine Learning'),
+('Aadhya','aadhya@gmail.com',20,'Data Science');
+
+select * from students;
+
+select * from students where age<20;
+
+select name, email from students;
+
+select * from students where course='Computer Science';
+
+update students set age=18 where name='Aadhya';
+
+update students set course='Data analytics' where course='Machine Learning';
+
+delete from students where id=2;
+
+delete from students where age<20;
+
+
+
+
