@@ -1,0 +1,24 @@
+select count(*) from students;
+
+select avg(age) from students;
+
+select min(age) from students;
+
+select max(age) from students;
+
+select count(*) as student_count from students where age>20;
+
+select course, count(*) as student_count from students group by course;
+
+select course, count(*) from students group by course;
+
+select course, count(*) from students group by course having count(*)>1;
+
+select course, count(*) as student_count from students group by course order by student_count desc;
+
+select * from students order by created_at desc limit 3;
+
+select * from students order by age desc limit 5;
+
+select * from students  where course='Computer Science' order by age desc;
+
