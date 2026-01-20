@@ -1,0 +1,55 @@
+create table users(id SERIAL primary key, name text not null, email text unique not null, created_at timestamp default current_timestamp);
+
+create table orders(id SERIAL primary key, user_id integer not null, amount integer not null, status text not null, created_at timestamp default current_timestamp, foreign key (user_id) references users(id));
+
+insert into users(name, email) values
+('Hima','hima@gmail.com'),
+('Jahnavi','jahnavi@gmail.com'),
+('Gopal','gopal@gmail.com'),
+('Ram','ram@gmail.com'),
+('Sai','sai@gmail.com');
+
+insert into orders(user_id,amount,status) values
+(1, 500, 'pending'),
+(1, 1200, 'completed'),
+(1, 300, 'pending'),
+(2, 700, 'completed'),
+(2, 450, 'pending'),
+(3, 900, 'completed'),
+(4, 150, 'pending'),
+(4, 2000, 'completed'),
+(5, 2500, 'pending'),
+(5, 800, 'completed');
+
+select * from users;
+
+select * from orders;
+
+select * from orders where user_id=1;
+
+select u.id, u.name, count(o.id) as order_count from users u join orders o on u.id=o.user_id group by u.id, u.name having count(o.id)>1;
+
+select u.name,sum(o.amount) as total_amount from users u join orders o on u.id=o.user_id group by u.name;
+
+update users set email='jaanu@gmail.com' where name='Jahnavi';
+
+select * from users;
+
+update orders set status='completed' where user_id=2;
+
+select * from orders;
+
+update orders set amount=1000 where user_id=3;
+
+delete from orders where id=7;
+
+delete from orders where user_id=2;
+
+delete from users where id=1;
+
+Why should orders not be stored inside the users table?
+
+- Orders represent a one-to-many relationship.
+- where a single user can have multiple orders.
+- Storing orders in the users table would cause data duplication, poor scalability, and violate database normalization principles.
+- Separating them ensures data integrity,flexibility, and efficient querying.
